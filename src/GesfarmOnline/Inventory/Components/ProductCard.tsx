@@ -6,6 +6,7 @@ import { Component } from "../Model/Component";
 
 export interface ProductProps {
     item: Product;
+    origen: string;
 }
 
 
@@ -13,8 +14,9 @@ const ProductCard = (props: ProductProps) => {
 
     const [open, setOpen] = useState(false);
 
+
     return (
-        <Card>
+        <Card className={(props.origen == "VP") ? "mt-1 mb-1 border border-success" : "mt-1 mb-1 border border-primary"}>
             <Card.Body>
                 <table >
                     <tbody>
@@ -28,7 +30,7 @@ const ProductCard = (props: ProductProps) => {
                 </table>
                 <Button
                     className="w-100"
-                    variant="outline-success"
+                    variant={(props.origen == "VP") ? "success" : "primary"}
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
                     aria-expanded={open}

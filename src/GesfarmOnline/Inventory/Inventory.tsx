@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Product } from "./Model/Product";
 import ProductCard from "./Components/ProductCard";
+import EmptyCard from "./Components/EmptyCard";
 
 
 
@@ -184,22 +185,12 @@ const Inventory: FunctionComponent = () => {
             <Row>
                 <Col>
                     {
-                        dataFiltradaFFD?.map((item: Product) => {
-                            return (
-                                <ProductCard
-                                item={item} />
-                            );
-                        })
+                        (dataFiltradaFFD?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="FFD" />); })
                     }
                 </Col>
                 <Col>
                     {
-                        dataFiltradaVP?.map((item: Product) => {
-                            return (
-                                <ProductCard
-                                    item={item} />
-                            );
-                        })
+                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="VP" />); })
                     }
                 </Col>
             </Row>
