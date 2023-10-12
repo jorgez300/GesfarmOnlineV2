@@ -15,8 +15,6 @@ const MixView = (props: MixViewProps) => {
 
     const dataMix = new InfoMix();
     dataMix.SetInfoMix(props.Regs);
-    console.log(dataMix);
-
 
     return (
         <>
