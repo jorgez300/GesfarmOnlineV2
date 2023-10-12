@@ -1,7 +1,6 @@
 import { Register } from "../Model/Register";
 import { InfoMix } from "../Model/InfoMix";
 import LineChart from "./LineChart";
-import '../Styles/Charts.css';
 import { Row } from "react-bootstrap";
 
 

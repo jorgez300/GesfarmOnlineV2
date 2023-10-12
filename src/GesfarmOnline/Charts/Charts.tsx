@@ -15,8 +15,11 @@ const Charts: FunctionComponent = () => {
     }
 
     const Filtrar = () => {
-        console.log(Center);
-        console.log(Data);
+        SetCenter("0");
+        Register.GetData()
+            .then((regs) => {
+                setData(regs);
+            });
     };
 
     useEffect(() => {
@@ -26,34 +29,34 @@ const Charts: FunctionComponent = () => {
             });
     }, []);
 
-    const FilterView = () => { 
+    const FilterView = () => {
 
-        switch(Center) { 
-            case "VP": { 
-                return (
-                    <DetailedView Regs={Data} Center={Center}  />
-               )
-               break; 
-            } 
-            case "FFD": { 
+        switch (Center) {
+            case "VP": {
                 return (
                     <DetailedView Regs={Data} Center={Center} />
                 )
-               break; 
-            } 
-            case "MIX": { 
+                break;
+            }
+            case "FFD": {
+                return (
+                    <DetailedView Regs={Data} Center={Center} />
+                )
+                break;
+            }
+            case "MIX": {
                 return (
                     <MixView Regs={Data} Center={Center} />
                 )
-                break; 
-             } 
-            default: { 
+                break;
+            }
+            default: {
                 return (
                     <></>
                 )
-               break; 
-            } 
-         } 
+                break;
+            }
+        }
     }
 
     return (
@@ -63,6 +66,7 @@ const Charts: FunctionComponent = () => {
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="basic-addon1">Producto / Principio Activo</InputGroup.Text>
                         <Form.Select
+                            value={Center}
                             onChange={OnFiltroChange}
                         >
                             <option value="0">- Seleccione -</option>
@@ -73,11 +77,11 @@ const Charts: FunctionComponent = () => {
                     </InputGroup>
                 </Col>
                 <Col xs={3}>
-                    <Button as="input" type="button" value="Filtrar" variant="success" className="w-100" onClick={Filtrar} />
+                    <Button as="input" type="button" value="Actualizar" variant="success" className="w-100" onClick={Filtrar} />
                 </Col>
             </Row>
-            { FilterView() }
-            
+            {FilterView()}
+
         </Container>
     )
 }
