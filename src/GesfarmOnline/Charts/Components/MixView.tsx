@@ -43,10 +43,10 @@ const MixView = (props: MixViewProps) => {
                     datasetFFD={dataMix.FFD.map((item) => item.MtoXVenta)}
                 />
                 <LineChart
-                    titulo="Mixto - Items fallas"
+                    titulo="Mixto - Items por venta"
                     labels={dataMix.Periodo}
-                    datasetVP={dataMix.VP.map((item) => item.ItemsFalla)}
-                    datasetFFD={dataMix.FFD.map((item) => item.ItemsFalla)}
+                    datasetVP={dataMix.VP.map((item) => item.ArtVenta)}
+                    datasetFFD={dataMix.FFD.map((item) => item.ArtVenta)}
                 />
                 <LineChart
                     titulo="Mixto - Items fallas"

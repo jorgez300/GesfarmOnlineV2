@@ -36,19 +36,19 @@ const DetailedView = (props: DetailedViewProps) => {
                     titulo="Porcentaje de Utilidad"
                     labels={dataDetailed.Periodo}
                     title1="% Utilidad"
-                    dataset1={dataDetailed.Utilidad.map((item) => item)}
+                    dataset1={dataDetailed.PorCentajeUtilidad.map((item) => item)}
                 />
                 <BarChart
                     titulo="Total Ventas Realizadas"
                     labels={dataDetailed.Periodo}
                     title1="Facturas"
-                    dataset1={dataDetailed.Utilidad.map((item) => item)}
+                    dataset1={dataDetailed.Cantidad.map((item) => item)}
                 />
                 <BarChart
                     titulo="Articulo por venta"
                     labels={dataDetailed.Periodo}
                     title1="Facturas"
-                    dataset1={dataDetailed.Cantidad.map((item) => item)}
+                    dataset1={dataDetailed.ArtVenta.map((item) => item)}
                 />
                 <BarChart
                     titulo="Items fallas"

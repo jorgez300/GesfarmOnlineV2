@@ -190,7 +190,7 @@ const Inventory: FunctionComponent = () => {
                 </Col>
                 <Col>
                     {
-                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="VP" />); })
+                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaVP?.map((item: Product) => { return (<ProductCard item={item} origen="VP" />); })
                     }
                 </Col>
             </Row>

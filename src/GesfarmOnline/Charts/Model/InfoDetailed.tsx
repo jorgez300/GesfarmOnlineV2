@@ -5,7 +5,8 @@ export class InfoDetailed {
     Periodo: string[];
     Facturas: number[];
     Venta: number[];
-    MtoXVenta:number[];
+    MtoXVenta: number[];
+    ArtVenta:number[];
     Costo:number[];
     Utilidad: number[];
     PorCentajeUtilidad: number[];
@@ -18,6 +19,7 @@ export class InfoDetailed {
         this.Facturas = [];
         this.Venta = [];
         this.MtoXVenta = [];
+        this.ArtVenta = [];
         this.Costo = [];
         this.Utilidad = [];
         this.PorCentajeUtilidad = [];
@@ -44,6 +46,7 @@ export class InfoDetailed {
                 this.Cantidad.push(item.rD_Fact_Emit);
                 this.ItemsFalla.push(item.rD_Cant_Fallas);
                 this.CostoFalla.push(item.rD_Monto_Fallas);
+                this.ArtVenta.push(item.rD_Art_Venta);
 
             }
 
