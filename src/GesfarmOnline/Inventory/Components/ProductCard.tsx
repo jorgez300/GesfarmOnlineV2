@@ -16,7 +16,7 @@ const ProductCard = (props: ProductProps) => {
 
 
     return (
-        <Card className={(props.origen == "VP") ? "mt-1 mb-1 border border-success" : "mt-1 mb-1 border border-primary"}>
+        <Card key={"Btn" + props.origen + props.item.Codigo} className={(props.origen == "VP") ? "mt-1 mb-1 border border-success" : "mt-1 mb-1 border border-primary"}>
             <Card.Body>
                 <table >
                     <tbody>
@@ -41,7 +41,7 @@ const ProductCard = (props: ProductProps) => {
                     <div>
                         <table >
                             <tbody>
-                                {props.item.ListPrinAct.map((item: Component) => <tr><td> {item.Id} - {item.Dsc} </td></tr>)}
+                                {props.item.ListPrinAct.map((item: Component) => <tr key={props.origen + props.item.Codigo + item.Id + item.Dsc}><td> {item.Id} - {item.Dsc} </td></tr>)}
                             </tbody>
                         </table>
                     </div>

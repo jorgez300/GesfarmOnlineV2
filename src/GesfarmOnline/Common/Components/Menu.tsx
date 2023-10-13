@@ -6,14 +6,20 @@ import { useNavigate } from "react-router-dom";
 
 const Menu: FunctionComponent = () => {
     const [show, setShow] = useState(false);
-
+    const [title, setTitle] = useState("Graficos");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const navegar = useNavigate();
 
-    const handleClickInventario = () => navegar("/Inventario");
-    const handleClickGraficos = () => navegar("/Graficos");
+    const handleClickInventario = () => {
+        setTitle("Inventario");
+        navegar("/Inventario");
+    }
+    const handleClickGraficos = () => {
+        setTitle("Graficos");
+        navegar("/Graficos");
+    }
 
     return (
         <>
@@ -23,7 +29,9 @@ const Menu: FunctionComponent = () => {
 
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Gesfarm Online</Offcanvas.Title>
+                    <Offcanvas.Title>Gesfarm Online - {title}</Offcanvas.Title>
+
+
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ListGroup>
