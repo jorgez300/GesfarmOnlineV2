@@ -64,7 +64,7 @@ const Charts: FunctionComponent = () => {
             <Row className="mt-1 mb-1">
                 <Col xs={9}>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">Producto / Principio Activo</InputGroup.Text>
+                        <InputGroup.Text id="basic-addon1">Origen</InputGroup.Text>
                         <Form.Select
                             value={Center}
                             onChange={OnFiltroChange}
