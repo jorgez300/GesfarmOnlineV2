@@ -60,7 +60,7 @@ const Charts: FunctionComponent = () => {
     }
 
     return (
-        <Container fluid>
+        <Container fluid style={{minWidth: "1000px"}}>
             <Row className="mt-1 mb-1">
                 <Col xs={9}>
                     <InputGroup className="mb-3">

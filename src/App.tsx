@@ -16,7 +16,7 @@ const App: FunctionComponent = () => {
       <Menu />
 
       <Routes>
-        <Route path='/' element={<Charts />} />
+        <Route path='/' element={<Inventory />} />
         <Route path='/Graficos' element={<Charts />} />
         <Route path='/Inventario' element={<Inventory />} />
       </Routes>
