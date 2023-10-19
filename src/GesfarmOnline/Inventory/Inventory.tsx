@@ -117,7 +117,7 @@ const Inventory: FunctionComponent = () => {
 
         if (Filtro.length <= 3) {
 
-            alert("error");
+            alert("Debe ingresar mas de 3 caracteres");
             return;
         }
 

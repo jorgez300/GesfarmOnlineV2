@@ -14,10 +14,12 @@ const Menu: FunctionComponent = () => {
 
     const handleClickInventario = () => {
         setTitle("Inventario");
+        setShow(false);
         navegar("/Inventario");
     }
     const handleClickGraficos = () => {
         setTitle("Graficos");
+        setShow(false);
         navegar("/Graficos");
     }
 

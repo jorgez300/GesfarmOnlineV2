@@ -3,6 +3,9 @@ import { Button, Card, Collapse } from "react-bootstrap";
 import { Product } from "../Model/Product";
 import { useState } from "react";
 import { Component } from "../Model/Component";
+import IconoMal from '../Images/icons8-eliminar-escudo-40.png';
+import IconoAdvertencia from '../Images/icons8-escudo-de-advertencia-40.png';
+import IconoOk from '../Images/icons8-seguridad-comprobado-40.png';
 
 export interface ProductProps {
     item: Product;
@@ -14,6 +17,41 @@ const ProductCard = (props: ProductProps) => {
 
     const [open, setOpen] = useState(false);
 
+
+    const icono = () => {
+
+        if (props.item.Minimo == 0 || props.item.Maximo == 0) { 
+            return (
+                <img src={IconoAdvertencia} alt="Logo" />
+            ) ;
+        }
+
+
+        if (props.item.Existen > 0 && props.item.Existen >= props.item.Minimo && props.item.Existen <= props.item.Maximo) { 
+            return (
+                <img src={IconoOk} alt="Logo" />
+            ) ;
+        }
+
+        if (props.item.Existen > 0 && props.item.Existen > props.item.Maximo) { 
+            return (
+                <img src={IconoMal} alt="Logo" />
+            ) ;
+        }
+        if (props.item.Existen > 0 && props.item.Existen < props.item.Minimo) { 
+            return (
+                <img src={IconoAdvertencia} alt="Logo" />
+            ) ;
+        }
+
+
+        if (props.item.Existen == 0) { 
+            return (
+                <img src={IconoMal} alt="Logo" />
+            ) ;
+        }
+
+    }
 
     return (
         <Card key={"Btn" + props.origen + props.item.Codigo} className={(props.origen == "VP") ? "mt-1 mb-1 border border-success" : "mt-1 mb-1 border border-primary"}>
@@ -30,8 +68,9 @@ const ProductCard = (props: ProductProps) => {
                         <tr><td><b>Precio Bs:</b> {props.item.PrecioBs}</td></tr>
                     </tbody>
                 </table>
+                { icono()}
                 <Button
-                    className="w-100"
+                    className="w-75 float-end"
                     variant={(props.origen == "VP") ? "success" : "primary"}
                     onClick={() => setOpen(!open)}
                     aria-controls="example-collapse-text"
