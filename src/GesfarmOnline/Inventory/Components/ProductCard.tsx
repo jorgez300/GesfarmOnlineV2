@@ -23,6 +23,8 @@ const ProductCard = (props: ProductProps) => {
                         <tr><td><b>Codigo:</b> {props.item.Codigo}</td></tr>
                         <tr><td><b>Descripcion:</b> {props.item.Descripcion}</td></tr>
                         <tr><td><b>Existen:</b> {props.item.Existen}</td></tr>
+                        <tr><td><b>Minimo:</b> {props.item.Minimo}</td></tr>
+                        <tr><td><b>Maximo:</b> {props.item.Maximo}</td></tr>
                         <tr><td><b>Costo USD:</b> {props.item.CostoUsd}</td></tr>
                         <tr><td><b>Costo Bs:</b> {props.item.CostoBs}</td></tr>
                         <tr><td><b>Precio Bs:</b> {props.item.PrecioBs}</td></tr>

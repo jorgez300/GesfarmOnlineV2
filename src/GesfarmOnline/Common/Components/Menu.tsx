@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Menu: FunctionComponent = () => {
     const [show, setShow] = useState(false);
-    const [title, setTitle] = useState("Graficos");
+    const [title, setTitle] = useState("Inventario");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 

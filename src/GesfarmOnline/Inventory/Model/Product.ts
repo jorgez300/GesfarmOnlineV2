@@ -6,6 +6,8 @@ export class Product {
     CostoUsd: number;
     Descripcion: string;
     Existen: number;
+    Minimo: number;
+    Maximo: number;
     ListPrinAct: Component[];
     PrecioBs: number;
 
@@ -15,6 +17,8 @@ export class Product {
         this.CostoUsd = 0;
         this.Descripcion = "";
         this.Existen = 0;
+        this.Minimo = 0;
+        this.Maximo = 0;
         this.ListPrinAct = [];
         this.PrecioBs = 0;
 
