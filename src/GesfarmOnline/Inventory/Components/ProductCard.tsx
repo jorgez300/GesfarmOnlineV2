@@ -25,14 +25,11 @@ const ProductCard = (props: ProductProps) => {
                 <img src={IconoAdvertencia} alt="Logo" />
             ) ;
         }
-
-
         if (props.item.Existen > 0 && props.item.Existen >= props.item.Minimo && props.item.Existen <= props.item.Maximo) { 
             return (
                 <img src={IconoOk} alt="Logo" />
             ) ;
         }
-
         if (props.item.Existen > 0 && props.item.Existen > props.item.Maximo) { 
             return (
                 <img src={IconoMal} alt="Logo" />
@@ -43,8 +40,6 @@ const ProductCard = (props: ProductProps) => {
                 <img src={IconoAdvertencia} alt="Logo" />
             ) ;
         }
-
-
         if (props.item.Existen == 0) { 
             return (
                 <img src={IconoMal} alt="Logo" />
