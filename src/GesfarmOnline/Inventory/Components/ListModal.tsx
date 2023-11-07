@@ -27,7 +27,6 @@ const ListModal = (props: ListModalProps) => {
 
     return (
         <Modal show={props.modalShow}
-            fullscreen={true}
             onHide={() => props.setModalShow(false)}
             aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header>
