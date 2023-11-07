@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Product } from "./Model/Product";
 import ProductCard from "./Components/ProductCard";
 import EmptyCard from "./Components/EmptyCard";
+import ListModal from "./Components/ListModal";
 
 
 
@@ -20,6 +21,10 @@ const Inventory: FunctionComponent = () => {
 
     const [dataFiltradaVP, setdataFiltradaVP] = useState<Product[]>();
     const [dataFiltradaFFD, setdataFiltradaFFD] = useState<Product[]>();
+
+    const [dataSeleccionada, setdataSeleccionada] = useState<Product[]>([]);
+
+    const [modalShow, setModalShow] = useState(false);
 
 
     const GetListaInventariosComp = () => {
@@ -153,15 +158,62 @@ const Inventory: FunctionComponent = () => {
         setdataFiltradaVP(SelVP);
     }
 
+    const SetSeleccionado = (item: Product) => {
+
+        console.log(item);
+
+        const lista: Product[] = [...dataSeleccionada!];
+
+        lista.push(item);
+
+        setdataSeleccionada(lista);
+
+        console.log(dataSeleccionada);
+
+    }
+
+    const DeleteSeleccionado = (codigo: string) => {
+
+        let lista: Product[] = [...dataSeleccionada!];
+        lista = lista.filter((item) => item.Codigo !== codigo);
+
+        if (lista.length == 0) { 
+            setModalShow(false);
+        }
+        
+        setdataSeleccionada(lista);
+    }
+
+    const AbrirSeleccionado = () => {
+
+        console.log(dataSeleccionada);
+        if (dataSeleccionada.length == 0) {
+            alert("No hay registros seleccionados")
+        }
+        else {
+            setModalShow(true);
+        }
+
+
+    }
+
+    const LimpiarSeleccionado = () => {
+
+        setdataSeleccionada([]);
+        setModalShow(false);
+        console.log(dataSeleccionada);
+
+    }
+
     useEffect(() => {
         GetListaInventariosComp();
     }, []);
 
 
     return (
-        <Container fluid style={{minWidth: "1000px"}}>
+        <Container fluid style={{ minWidth: "1000px" }}>
             <Row className="mt-1 mb-1">
-                <Col xs={9}>
+                <Col xs={8}>
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="basic-addon1">Producto / Principio Activo</InputGroup.Text>
                         <Form.Control
@@ -170,8 +222,11 @@ const Inventory: FunctionComponent = () => {
                         />
                     </InputGroup>
                 </Col>
-                <Col xs={3}>
+                <Col xs={2}>
                     <Button as="input" type="button" value="Filtrar" variant="success" className="w-100" onClick={Filtrar} />
+                </Col>
+                <Col xs={2}>
+                    <Button as="input" type="button" value="Listado" variant="primary" className="w-100" onClick={AbrirSeleccionado} />
                 </Col>
             </Row>
             <Row>
@@ -185,16 +240,24 @@ const Inventory: FunctionComponent = () => {
             <Row>
                 <Col>
                     {
-                        (dataFiltradaFFD?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="FFD" />); })
+                        (dataFiltradaFFD?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="FFD" AgregarSeleccionado={SetSeleccionado} />); })
                     }
                 </Col>
                 <Col>
                     {
-                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaVP?.map((item: Product) => { return (<ProductCard item={item} origen="VP" />); })
+                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaVP?.map((item: Product) => { return (<ProductCard item={item} origen="VP" AgregarSeleccionado={SetSeleccionado} />); })
                     }
                 </Col>
             </Row>
+            <ListModal
+                items={dataSeleccionada}
+                modalShow={modalShow}
+                setModalShow={setModalShow}
+                LimpiarSeleccionado={LimpiarSeleccionado}
+                DeleteSeleccionado={DeleteSeleccionado}
+            />
         </Container>
+
     )
 }
 

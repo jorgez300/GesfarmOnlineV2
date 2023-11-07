@@ -10,6 +10,7 @@ import IconoOk from '../Images/icons8-seguridad-comprobado-40.png';
 export interface ProductProps {
     item: Product;
     origen: string;
+    AgregarSeleccionado(item: Product): void;
 }
 
 
@@ -20,30 +21,30 @@ const ProductCard = (props: ProductProps) => {
 
     const icono = () => {
 
-        if (props.item.Minimo == 0 || props.item.Maximo == 0) { 
+        if (props.item.Minimo == 0 || props.item.Maximo == 0) {
             return (
                 <img src={IconoAdvertencia} alt="Logo" />
-            ) ;
+            );
         }
-        if (props.item.Existen > 0 && props.item.Existen >= props.item.Minimo && props.item.Existen <= props.item.Maximo) { 
+        if (props.item.Existen > 0 && props.item.Existen >= props.item.Minimo && props.item.Existen <= props.item.Maximo) {
             return (
                 <img src={IconoOk} alt="Logo" />
-            ) ;
+            );
         }
-        if (props.item.Existen > 0 && props.item.Existen > props.item.Maximo) { 
+        if (props.item.Existen > 0 && props.item.Existen > props.item.Maximo) {
             return (
                 <img src={IconoMal} alt="Logo" />
-            ) ;
+            );
         }
-        if (props.item.Existen > 0 && props.item.Existen < props.item.Minimo) { 
+        if (props.item.Existen > 0 && props.item.Existen < props.item.Minimo) {
             return (
                 <img src={IconoAdvertencia} alt="Logo" />
-            ) ;
+            );
         }
-        if (props.item.Existen == 0) { 
+        if (props.item.Existen == 0) {
             return (
                 <img src={IconoMal} alt="Logo" />
-            ) ;
+            );
         }
 
     }
@@ -63,16 +64,28 @@ const ProductCard = (props: ProductProps) => {
                         <tr><td><b>Precio Bs:</b> {props.item.PrecioBs}</td></tr>
                     </tbody>
                 </table>
-                { icono()}
-                <Button
-                    className="w-75 float-end"
-                    variant={(props.origen == "VP") ? "success" : "primary"}
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                >
-                    Principios Activos
-                </Button>
+                {icono()}
+                <span>
+                    <Button
+                        className="w-50 "
+                        variant={(props.origen == "VP") ? "success" : "primary"}
+                        onClick={() => setOpen(!open)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                    >
+                        Principios Activos
+                    </Button>
+                    <Button
+                        className="w-25 float-end"
+                        variant={(props.origen == "VP") ? "success" : "primary"}
+                        onClick={() => props.AgregarSeleccionado(props.item)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                    >
+                        Agregar
+                    </Button>
+                </span>
+
                 <Collapse in={open}>
                     <div>
                         <table >
