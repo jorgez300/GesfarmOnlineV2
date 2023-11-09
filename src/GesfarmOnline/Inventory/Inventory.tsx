@@ -158,12 +158,13 @@ const Inventory: FunctionComponent = () => {
         setdataFiltradaVP(SelVP);
     }
 
-    const SetSeleccionado = (item: Product) => {
+    const SetSeleccionado = ( origen: string,item: Product) => {
 
         console.log(item);
 
         const lista: Product[] = [...dataSeleccionada!];
 
+        item.Origen = origen;
         lista.push(item);
 
         setdataSeleccionada(lista);

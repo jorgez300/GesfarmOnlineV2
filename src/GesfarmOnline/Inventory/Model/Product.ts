@@ -10,6 +10,7 @@ export class Product {
     Maximo: number;
     ListPrinAct: Component[];
     PrecioBs: number;
+    Origen!: string | undefined;
 
     constructor() {
         this.Codigo = "";

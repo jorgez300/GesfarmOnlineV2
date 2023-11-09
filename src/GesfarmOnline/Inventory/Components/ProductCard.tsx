@@ -10,7 +10,7 @@ import IconoOk from '../Images/icons8-seguridad-comprobado-40.png';
 export interface ProductProps {
     item: Product;
     origen: string;
-    AgregarSeleccionado(item: Product): void;
+    AgregarSeleccionado(origen: string, item: Product): void;
 }
 
 
@@ -78,7 +78,7 @@ const ProductCard = (props: ProductProps) => {
                     <Button
                         className="w-25 float-end"
                         variant={(props.origen == "VP") ? "success" : "primary"}
-                        onClick={() => props.AgregarSeleccionado(props.item)}
+                        onClick={() => props.AgregarSeleccionado(props.origen, props.item)}
                         aria-controls="example-collapse-text"
                         aria-expanded={open}
                     >

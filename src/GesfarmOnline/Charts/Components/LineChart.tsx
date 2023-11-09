@@ -47,6 +47,10 @@ const LineChart = (props: LineChartProps) => {
             y: {
                 beginAtZero: true
             }
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: false,
         }
     };
 

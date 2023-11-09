@@ -16,3 +16,12 @@
     cursor: pointer;
     width: 100px;
 }
+
+.modal-90w{
+    width: 90% !important;
+}
+
+.modal-dialog {
+    max-width: none !important;
+
+}

@@ -28,13 +28,15 @@ const ListModal = (props: ListModalProps) => {
     return (
         <Modal show={props.modalShow}
             onHide={() => props.setModalShow(false)}
+            dialogClassName="modal-90w"
+            scrollable
             aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Listado de productos seleccionados
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body className="grid-example">
+            <Modal.Body style={{ maxHeight: '650px' }}>
                 <Container fluid>
                     <Row>
                         <Col xs={12}>
@@ -43,6 +45,7 @@ const ListModal = (props: ListModalProps) => {
                                 <thead>
                                     <tr>
                                         <th></th>
+                                        <th>Origen</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
                                         <th>Precio Bs</th>
@@ -51,11 +54,12 @@ const ListModal = (props: ListModalProps) => {
                                 <tbody>
                                     {props.items.map((item) => {
                                         return (
-                                            <tr>
+                                            <tr className={(item.Origen == "VP") ? "table-success" : "table-primary"}>
                                                 <td><Button
                                                     variant="danger"
                                                     onClick={() => props.DeleteSeleccionado(item.Codigo)}
                                                 >Eliminar</Button></td>
+                                                <td>{item.Origen}</td>
                                                 <td>{item.Codigo}</td>
                                                 <td>{item.Descripcion}</td>
                                                 <td>{item.PrecioBs}</td>
@@ -63,7 +67,7 @@ const ListModal = (props: ListModalProps) => {
                                     })}
 
                                     <tr>
-                                        <th colSpan={3}>Total</th>
+                                        <th colSpan={4}>Total</th>
                                         <th>{GetTotal()}</th>
                                     </tr>
                                 </tbody>
