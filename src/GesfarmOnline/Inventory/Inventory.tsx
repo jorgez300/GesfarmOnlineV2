@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react"
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -115,7 +116,7 @@ const Inventory: FunctionComponent = () => {
         setFiltro(event.target.value.toString());
     }
 
-    const Filtrar = (codigo: string) => {
+    const Filtrar = (codigo: string | any) => {
 
         const SelVP: Product[] = [];
         const SelFFD: Product[] = [];
@@ -163,7 +164,6 @@ const Inventory: FunctionComponent = () => {
     }
 
     const SetFiltroComponente = (codigo: string) => {
-        console.log(codigo);
         setFiltro(codigo);
         Filtrar(codigo);
     }
