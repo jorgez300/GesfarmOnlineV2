@@ -115,12 +115,16 @@ const Inventory: FunctionComponent = () => {
         setFiltro(event.target.value.toString());
     }
 
-    const Filtrar = () => {
+    const Filtrar = (codigo: string) => {
 
         const SelVP: Product[] = [];
         const SelFFD: Product[] = [];
 
-        if (Filtro.length <= 3) {
+        let value: string = '';
+
+        (typeof(codigo) != 'object') ? value = codigo : value = Filtro;
+
+        if (value.length <= 3) {
 
             alert("Debe ingresar mas de 3 caracteres");
             return;
@@ -128,12 +132,12 @@ const Inventory: FunctionComponent = () => {
 
         dataVP!.forEach((item) => {
 
-            if (item.Codigo.toUpperCase() == Filtro.toUpperCase() || item.Descripcion.toUpperCase().includes(Filtro.toUpperCase())) {
+            if (item.Codigo.toUpperCase() == value.toUpperCase() || item.Descripcion.toUpperCase().includes(value.toUpperCase())) {
                 SelVP.push(item);
             }
             else {
                 item.ListPrinAct.forEach((pa) => {
-                    if (pa.Dsc.toUpperCase().includes(Filtro.toUpperCase())) {
+                    if (pa.Dsc.toUpperCase().includes(value.toUpperCase())) {
                         SelVP.push(item);
                     }
                 })
@@ -142,12 +146,12 @@ const Inventory: FunctionComponent = () => {
 
         dataFFD!.forEach((item) => {
 
-            if (item.Codigo.toUpperCase() == Filtro.toUpperCase() || item.Descripcion.toUpperCase().includes(Filtro.toUpperCase())) {
+            if (item.Codigo.toUpperCase() == value.toUpperCase() || item.Descripcion.toUpperCase().includes(value.toUpperCase())) {
                 SelFFD.push(item);
             }
             else {
                 item.ListPrinAct.forEach((pa) => {
-                    if (pa.Dsc.toUpperCase().includes(Filtro.toUpperCase())) {
+                    if (pa.Dsc.toUpperCase().includes(value.toUpperCase())) {
                         SelFFD.push(item);
                     }
                 })
@@ -156,6 +160,12 @@ const Inventory: FunctionComponent = () => {
 
         setdataFiltradaFFD(SelFFD);
         setdataFiltradaVP(SelVP);
+    }
+
+    const SetFiltroComponente = (codigo: string) => {
+        console.log(codigo);
+        setFiltro(codigo);
+        Filtrar(codigo);
     }
 
     const SetSeleccionado = ( origen: string,item: Product) => {
@@ -220,6 +230,7 @@ const Inventory: FunctionComponent = () => {
                         <Form.Control
                             aria-describedby="basic-addon1"
                             onChange={OnFiltroChange}
+                            value={Filtro}
                         />
                     </InputGroup>
                 </Col>
@@ -241,12 +252,12 @@ const Inventory: FunctionComponent = () => {
             <Row>
                 <Col>
                     {
-                        (dataFiltradaFFD?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="FFD" AgregarSeleccionado={SetSeleccionado} />); })
+                        (dataFiltradaFFD?.length == 0) ? <EmptyCard /> : dataFiltradaFFD?.map((item: Product) => { return (<ProductCard item={item} origen="FFD" AgregarSeleccionado={SetSeleccionado}  SetFiltroComponente={SetFiltroComponente} />); })
                     }
                 </Col>
                 <Col>
                     {
-                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaVP?.map((item: Product) => { return (<ProductCard item={item} origen="VP" AgregarSeleccionado={SetSeleccionado} />); })
+                        (dataFiltradaVP?.length == 0) ? <EmptyCard /> : dataFiltradaVP?.map((item: Product) => { return (<ProductCard item={item} origen="VP" AgregarSeleccionado={SetSeleccionado} SetFiltroComponente={SetFiltroComponente} />); })
                     }
                 </Col>
             </Row>

@@ -11,6 +11,7 @@ export interface ProductProps {
     item: Product;
     origen: string;
     AgregarSeleccionado(origen: string, item: Product): void;
+    SetFiltroComponente(codigo: string): void;
 }
 
 
@@ -90,7 +91,7 @@ const ProductCard = (props: ProductProps) => {
                     <div>
                         <table >
                             <tbody>
-                                {props.item.ListPrinAct.map((item: Component) => <tr key={props.origen + props.item.Codigo + item.Id + item.Dsc}><td> {item.Id} - {item.Dsc} </td></tr>)}
+                                {props.item.ListPrinAct.map((item: Component) => <tr key={props.origen + props.item.Codigo + item.Id + item.Dsc}><td> <span onClick={() => { props.SetFiltroComponente(item.Dsc) }}>{item.Id} - {item.Dsc}</span> </td></tr>)}
                             </tbody>
                         </table>
                     </div>
